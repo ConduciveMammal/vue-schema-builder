@@ -86,6 +86,35 @@
                     <div class="Polaris-Select__Backdrop"></div>
                   </div>
                 </div>
+
+                  <div role="group" class="Polaris-FormLayout--condensed" v-if="inputType === 'Select'">
+                    <div class="Polaris-FormLayout__Items">
+                      <div class="Polaris-FormLayout__Item">
+                        <div class="">
+                          <div class="Polaris-Labelled__LabelWrapper">
+                            <div class="Polaris-Label"><label id="SelectLabelLabel" for="SelectLabelInput" class="Polaris-Label__Text">Option Label</label></div>
+                          </div>
+                          <div class="Polaris-TextField"><input id="SelectLabelInput" class="Polaris-TextField__Input" aria-label="Length" aria-labelledby="SelectLabelLabel" aria-invalid="false" value="">
+                            <div class="Polaris-TextField__Backdrop"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Polaris-FormLayout__Item">
+                        <div class="">
+                          <div class="Polaris-Labelled__LabelWrapper">
+                            <div class="Polaris-Label"><label id="SelectValueLabel" for="SelectValueInput" class="Polaris-Label__Text">Option Value</label></div>
+                          </div>
+                          <div class="Polaris-TextField"><input id="SelectValueInput" class="Polaris-TextField__Input" aria-label="Width" aria-labelledby="SelectValueLabel" aria-invalid="false" value="">
+                            <div class="Polaris-TextField__Backdrop"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="Polaris-FormLayout__Item">
+                    <button type="button" @click="addRow" class="Polaris-Button Polaris-Button--outline Polaris-Button--fullWidth"><span class="Polaris-Button__Content"><span>Add Extra Field</span></span></button>
+                    </div>
+                  </div>
+
                 <div class="Polaris-FormLayout__Item">
                   <div class="Polaris-Labelled__LabelWrapper">
                     <div class="Polaris-Label">
@@ -161,9 +190,8 @@
               </div>
               <div class="Polaris-Stack__Item" v-if="SchemaBlocks.length > 1">
                 <div class="Polaris-Stack__Item">
-
+                  <!-- <Button>Ello, M8!</Button> -->
                 <div class="Polaris-ButtonGroup">
-                  <div class="Polaris-ButtonGroup__Item"><button type="button" class="Polaris-Button Polaris-Button--destructive"><span class="Polaris-Button__Content"><span>Add variant</span></span></button></div>
                   <div class="Polaris-ButtonGroup__Item Polaris-ButtonGroup__Item--plain">
                     <button type="button" class="Drag-Button Polaris-Button Polaris-Button--plain">
                       <span class="Polaris-Button__Content">
@@ -191,6 +219,7 @@
 
 <script>
 import draggable from 'vuedraggable'
+// import Polaris from 'Polaris.vue'
 export default {
 
   name: 'SchemaBuilder',
@@ -214,6 +243,7 @@ export default {
         "Image Picker",
         "Radio",
         "Checkbox",
+        "Select"
       ],
       catName: ''
     }
@@ -239,7 +269,17 @@ export default {
         catName: this.catName
       })
       this.catName = '';
-    }
+    },
+    addRow: function () {
+      var elem = document.createElement('tr');
+      this.rows.push({
+        title: "",
+        description: "",
+        file: {
+          name: 'Choose File'
+        }
+      });
+    },
   },
   components: {
     draggable

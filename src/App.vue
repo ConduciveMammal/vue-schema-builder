@@ -6,11 +6,13 @@
 
 <script>
 import SchemaBuilder from './components/SchemaBuilder.vue'
+// import Polaris from './components/Polaris.vue'
 
 export default {
   name: 'app',
   components: {
-    SchemaBuilder
+    SchemaBuilder,
+    // Polaris
   }
 }
 </script>
