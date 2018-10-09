@@ -11,7 +11,7 @@ import SchemaBuilder from './components/SchemaBuilder.vue'
 export default {
   name: 'app',
   components: {
-    SchemaBuilder,
+    SchemaBuilder
     // Polaris
   }
 }
